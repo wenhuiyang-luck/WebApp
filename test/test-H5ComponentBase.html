@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <title>慕课网2015课程学习情况</title>
+
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-size: 12px;
+        }
+
+        .iphone{
+            width: 340px;
+            height: 540px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -270px 0 0 -170px;  /* 水平垂直居中 */
+        }
+ 
+    </style>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript" src="../js/H5ComponentBase.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
+
+    <body>
+        <!-- 开发测试 H5ComponentBase 对象（基本的图文组件） -->
+        <!-- 模拟一个手机 -->
+        <div class="iphone">
+
+        </div>
+
+        <script type="text/javascript">
+            var cfg = {
+                type: 'base',
+                width: 514,
+                height: 306,
+                bg: './p1_people.png',
+                css: {
+                    bottom:0,
+                    opacity:0,
+                },
+                animateIn:{bottom:80, opacity:1},
+                animateOut:{bottom:0, opacity:0},
+                center: true
+            }
+
+            var h5 = new H5ComponentBase('myName', cfg);
+            $('.iphone').append(h5);
+
+            var leave = false;
+            $('body').click(function(){
+                leave = !leave;
+                $('.h5_component').trigger(leave? 'onLeave':'onLoad');
+            })
+        </script>
+
+    </body>
+
+</html>
