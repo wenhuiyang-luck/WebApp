@@ -103,7 +103,7 @@ var H5ComponentPolyline = function(name, cfg){
 			y = h-(h*item[1]*per);
 			
 			ctx.fillStyle = item[2] ? item[2]:'#595959';
-			ctx.fillText((item[1]*100)+'%',x-10,y-10);
+			ctx.fillText((item[1]*100>>0)+'%',x-10,y-10);
 		}
 	}
 	

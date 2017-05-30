@@ -16,21 +16,27 @@ var H5ComponentBase = function(name, cfg){
 
 	if(cfg.center === true){
 		component.css({
-			marginLeft: (cfg.width/4 * -1) + 'px',
+			marginLeft: (cfg.width/4 * -1 ) + 'px',
 			left: '50%'
 		})
 	}
 
 	// 自定义参数
-
+	if(typeof cfg.onclick === 'function'){
+		component.on('click', cfg.onclick);
+	}
     component.on('onLoad',function(){
-        component.addClass(cls+'_load').removeClass(cls+'_leave');
-        cfg.animateIn && component.animate(cfg.animateIn);
+    	setTimeout(function(){
+    		component.addClass(cls+'_load').removeClass(cls+'_leave');
+        	cfg.animateIn && component.animate(cfg.animateIn);
+    	},cfg.delay || 0);
         return false;    //防止事件向上传播引起的死循环（DOM事件循环传播）
     })
     component.on('onLeave',function(){
-        component.addClass(cls+'_leave').removeClass(cls+'_load');
-        cfg.animateOut && component.animate(cfg.animateOut);
+    	setTimeout(function(){
+        	component.addClass(cls+'_leave').removeClass(cls+'_load');
+        	cfg.animateOut && component.animate(cfg.animateOut);
+        },cfg.delay || 0);
         return false;
     })
 	return component;
